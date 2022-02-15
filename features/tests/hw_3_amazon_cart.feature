@@ -1,5 +1,5 @@
 # Created by maxmal at 2/13/22
-Feature: Verify cart functionality
+Feature: Amazon Cart
 
   Scenario: Verify that Amazon cart is empty
     Given Open Amazon Home page
