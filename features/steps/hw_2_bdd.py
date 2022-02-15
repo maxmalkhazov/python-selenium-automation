@@ -18,4 +18,4 @@ def verify_sign_in(context):
     expected_result = 'Sign-in'
     actual_result = context.driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']").text
     print(actual_result)
-    assert expected_result.lower() == actual_result.lower()
+    assert expected_result.lower() == actual_result.lower(), f'Expected {expected_result}, but got {actual_result}'
