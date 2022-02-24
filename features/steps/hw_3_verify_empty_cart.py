@@ -23,4 +23,3 @@ def verify_empty_cart(context):
     actual_result = context.driver.find_element(By.ID, 'nav-cart-count').text
     print(actual_result)
     assert expected_result == actual_result, f'Expected {expected_result}, but got {actual_result}'
-    print('Test case passed')

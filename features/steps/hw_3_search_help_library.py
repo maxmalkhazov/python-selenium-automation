@@ -18,7 +18,5 @@ def input_keyword(context):
 def verify_redirect_page(context):
     expected_result = 'Cancel Items or Orders'
     actual_result = context.driver.find_element(By.XPATH, "//div[@class='help-content']/h1[text()='Cancel Items or Orders']").text
-    print(actual_result)
 
     assert expected_result == actual_result, f'Expected {expected_result}, but got {actual_result}'
-    print('Test case passed')
