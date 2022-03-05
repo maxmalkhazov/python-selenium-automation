@@ -9,8 +9,8 @@ def open_best_sellers_page(context):
 
 
 @then('verify there are {expected_amount} links')
-def verify_5_links(context, expected_amount):
+def verify_links(context, expected_amount):
     expected_amount = int(expected_amount)
     links_amount = len(context.driver.find_elements(*HEADER_LINKS))
     print(links_amount)
-    assert links_amount == expected_amount, f'Expected 5 links but got {links_amount}'
+    assert links_amount == expected_amount, f'Expected {expected_amount} links but got {links_amount}'
