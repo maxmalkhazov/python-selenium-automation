@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
+
 
 
 CLICK_CART = (By.ID, 'nav-cart')
@@ -14,7 +14,6 @@ def open_url(context):
 @when('click on cart icon')
 def click_cart(context):
     context.driver.find_element(*CLICK_CART).click()
-    sleep(1)
 
 
 @then('verify cart is empty')

@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
 
 SEARCH_INPUT = (By.ID, 'twotabsearchtextbox')
 SEARCH_SUBMIT = (By.ID, 'nav-search-submit-button')
@@ -18,7 +18,6 @@ def search_item(context, item):
 @when('click search')
 def click_search(context):
     context.driver.find_element(*SEARCH_SUBMIT).click()
-    sleep(1)
 
 
 @when('click on item')
@@ -29,12 +28,10 @@ def click_on_item(context):
 @when('add item to cart')
 def add_to_cart(context):
     button = context.driver.find_element(*CLICK_ADD_TO_CART).click()
-    sleep(3)
 
 
 @then('verify item exists in cart')
 def verify_item_added(context):
-    expected_result = '1'
-    actual_result = context.driver.find_element(By.ID, 'nav-cart-count').text
-    print(actual_result)
-    assert expected_result == actual_result, f'Expected {expected_result}, but got {actual_result}'
+    assert context.driver.wait.until(
+        EC.text_to_be_present_in_element((By.ID, 'nav-cart-count'), '1'),
+        message="Item was not added to cart")
