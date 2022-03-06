@@ -17,7 +17,8 @@ def verify_product_text(context):
     expected_result = 'Regular'
 
     for t in product_text:
-        assert expected_result.lower() in context.driver.find_element(*PRODUCT_TEXT).text.lower(), f'{expected_result} not found in product'
+        print(t.text)
+        assert expected_result.lower() in t.text.lower(), f'{expected_result} not found in product'
 
 
 @then('Verify product has a product name')
@@ -25,6 +26,7 @@ def verify_product_name(context):
     product_name = context.driver.find_elements(*PRODUCT_NAME)
 
     for item in product_name:
-        assert len(context.driver.find_element(*PRODUCT_NAME).text) > 0, f'No product name'
+        print(item.text)
+        assert len(item.text) > 0, f'No product name'
 
 
