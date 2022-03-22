@@ -1,16 +1,12 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 
+SEARCH_INPUT = (By.ID, 'twotabsearchtextbox')
+SEARCH_BUTTON = (By.ID, 'nav-search-submit-button')
 
-
-SEARCH_INPUT = (By.NAME, 'q')
-SEARCH_SUBMIT = (By.NAME, 'btnK')
-
-
-@given('Open Google page')
-def open_google(context):
-    context.driver.get('https://www.google.com/')
-
+@given('open amazon homepage')
+def open_amazon_homepage(context):
+    context.app.main_page.open_main()
 
 @when('Input {search_word} into search field')
 def input_search(context, search_word):
@@ -21,7 +17,7 @@ def input_search(context, search_word):
 
 @when('Click on search icon')
 def click_search_icon(context):
-    context.driver.find_element(*SEARCH_SUBMIT).click()
+    context.driver.find_element(*SEARCH_BUTTON).click()
 
 
 @then('Product results for {search_word} are shown')

@@ -5,10 +5,6 @@ from time import sleep
 
 SIGN_IN_POPUP_BTN = (By.CSS_SELECTOR, '#nav-signin-tooltip a.nav-action-button')
 
-@given('open amazon homepage')
-def open_amazon_homepage(context):
-    context.driver.get('https://www.amazon.com/')
-
 
 @when('click on button from signin popup')
 def click_signin_popup(context):

@@ -8,7 +8,7 @@ HEADER_TITLE = (By.CSS_SELECTOR, '.a-row.a-carousel-header-row.a-size-large h2')
 
 @given('open amazon best sellers page')
 def open_best_sellers_page(context):
-    context.driver.get('https://www.amazon.com/gp/bestsellers/?ref_=nav_cs_bestsellers')
+    context.app.bestsellers_page.open_best_sellers_page()
 
 
 @then('verify there are {expected_amount} links')
