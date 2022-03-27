@@ -25,10 +25,11 @@ Feature: Amazon Cart Tests
   Scenario Outline: User can select and search in a department
     Given Open Amazon homepage
     When Select department by alias <alias>
-    And Search for Faust
+    And Search for <item>
     And Click search
     Then Verify <department> department is selected
     Examples:
-    |alias   |department   |
-    |stripbooks   |books    |
-    |audible   |audible   |
+    |alias         |item                |department   |
+    |stripbooks    |faust               |books        |
+    |audible       |faust               |audible      |
+    |gift-cards    |amazon gift card    |gift-cards   |

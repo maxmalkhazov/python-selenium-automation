@@ -13,6 +13,8 @@ class Header(Page):
     SPANISH_LANG = (By.CSS_SELECTOR, '[href="#switch-lang=es_US"]')
     SELECT_DEPARTMENT = (By.ID, 'searchDropdownBox')
     DEPARTMENT = (By.ID, 'nav-search-label-id')
+    NEW_ARRIVALS = (By.XPATH, '//span[contains(text(),"New") and @class="nav-a-content"]')
+    WOMAN_CATEGORY = (By.XPATH, "//ul[@class='mm-category-list']//h3[text()='Women']")
 
     def search_product(self):
         self.input_text('coffee', *self.SEARCH_INPUT)
@@ -31,6 +33,15 @@ class Header(Page):
         actions = ActionChains(self.driver)
         actions.move_to_element(flag)
         actions.perform()
+
+    def hover_new_arrivals(self):
+        new_arrivals = self.find_element(*self.NEW_ARRIVALS)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(new_arrivals)
+        actions.perform()
+
+    def verify_new_arrivals(self):
+        self.wait_for_element_appear(*self.WOMAN_CATEGORY)
 
     def verify_spanish_lang_present(self):
         self.wait_for_element_appear(*self.SPANISH_LANG)

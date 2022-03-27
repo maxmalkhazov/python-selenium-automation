@@ -10,6 +10,16 @@ def open_amazon_product(context, product_id):
     context.driver.get(f'https://www.amazon.com/dp/{product_id}/')
 
 
+@when('Hover over New Arrivals tab')
+def hover_over_new_arrivals(context):
+    context.app.header.hover_new_arrivals()
+
+
+@then('Verify New Arrivals items displayed')
+def verify_new_arrivals(context):
+    context.app.header.verify_new_arrivals()
+
+
 @then('Verify user can click through 3 colors')
 def verify_3_colors(context):
     expected_colors = ['Black', 'Navy', 'Multicolour']
