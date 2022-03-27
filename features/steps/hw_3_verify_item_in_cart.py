@@ -30,6 +30,26 @@ def add_to_cart(context):
     button = context.driver.find_element(*CLICK_ADD_TO_CART).click()
 
 
+@when('Hover over language options')
+def hover_lang_options(context):
+    context.app.header.hover_lang_options()
+
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
+
+
+@then('Verify Spanish option present')
+def verify_spanish_option(context):
+    context.app.header.verify_spanish_lang_present()
+
+
+@then('Verify {department} department is selected')
+def verify_department(context, department):
+    context.app.search_results_page.verify_correct_department(department)
+
+
 @then('verify item exists in cart')
 def verify_item_added(context):
     assert context.driver.wait.until(

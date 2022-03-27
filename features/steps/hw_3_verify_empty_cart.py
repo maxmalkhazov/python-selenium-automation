@@ -3,22 +3,17 @@ from behave import given, when, then
 
 
 
+
 CLICK_CART = (By.ID, 'nav-cart')
-
-
-@given('open amazon home page')
-def open_url(context):
-    context.driver.get('https://www.amazon.com/')
+CART_COUNT = (By.ID, 'nav-cart-count')
 
 
 @when('click on cart icon')
 def click_cart(context):
-    context.driver.find_element(*CLICK_CART).click()
+    context.app.header.wait_for_element_click(*CLICK_CART)
 
 
 @then('verify cart is empty')
 def verify_empty_cart(context):
-    expected_result = '0'
-    actual_result = context.driver.find_element(By.ID, 'nav-cart-count').text
-    print(actual_result)
-    assert expected_result == actual_result, f'Expected {expected_result}, but got {actual_result}'
+
+    context.app.header.verify_empty_cart()
